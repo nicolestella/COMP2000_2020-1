@@ -1,20 +1,22 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class Main extends JFrame {
+class Main extends JFrame {
+    
+    class App extends JPanel {
+        
+        Grid grid;
 
-    public class Canvas extends JPanel {
-        Grid grid = new Grid(20,20);
-
-        public Canvas(){
-            setPreferredSize(new Dimension(720,720));
+        public App() {
+            setPreferredSize(new Dimension(720, 720));
+            grid = new Grid();
         }
 
         @Override
-        public void paint(Graphics g){
-            grid.paint(g);
-            grid.mouseOver((double)getMousePosition().getX(), (double)getMousePosition().getY());
+        public void paint(Graphics g) {
+            grid.paint(g, getMousePosition());
         }
+
     }
 
     public static void main(String[] args) throws Exception {
@@ -22,18 +24,16 @@ public class Main extends JFrame {
         window.run();
     }
 
-    
-
-    public Main() {
+    private Main() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        Canvas canvas = new Canvas();
+        App canvas = new App();
         this.setContentPane(canvas);
         this.pack();
         this.setVisible(true);
     }
 
-    public void run(){
-        while(true){
+    public void run() {
+        while (true) {
             this.repaint();
         }
     }

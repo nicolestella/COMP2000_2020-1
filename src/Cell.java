@@ -1,24 +1,34 @@
 import java.awt.*;
 
-public class Cell {
-    int width;
-    int height;
+class Cell{
+    // fields
+    int x;
+    int y;
+    static int size = 35;
 
-    Color color = Color.WHITE;
-
-    public Cell (int x, int y) {
-        width = x;
-        height = y;
+    //constructors
+    public Cell(int x, int y){
+        this.x = x;
+        this.y = y;
     }
 
-    public void paint (Graphics g, int x, int y){
-        g.setColor(color);
-        g.fillRect(x,y,width,height);
+    //methods
+    void paint(Graphics g, Point mousePos){
+        if(contains(mousePos)){
+            g.setColor(Color.GRAY);
+        } else {
+            g.setColor(Color.WHITE);
+        }
+        g.fillRect(x,y,size,size);
         g.setColor(Color.BLACK);
-        g.drawRect(x,y,width,height);
+        g.drawRect(x,y,size,size);
     }
 
-    public void cellColor(Color color){
-        this.color = color;
+    boolean contains(Point p){
+        if (p != null){
+            return (x < p.x && x+size > p.x && y < p.y && y+size > p.y);
+        } else {
+            return false;
+        }
     }
 }
