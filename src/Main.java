@@ -6,15 +6,18 @@ class Main extends JFrame {
     class App extends JPanel {
         
         Grid grid;
+        Stage stage;
 
         public App() {
             setPreferredSize(new Dimension(720, 720));
             grid = new Grid();
+            stage = new Stage(grid);
         }
 
         @Override
         public void paint(Graphics g) {
             grid.paint(g, getMousePosition());
+            stage.paint(g);
         }
 
     }
