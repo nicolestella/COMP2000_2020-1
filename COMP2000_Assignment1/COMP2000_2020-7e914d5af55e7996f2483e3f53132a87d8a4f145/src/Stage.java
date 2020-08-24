@@ -8,7 +8,7 @@ public class Stage {
 
     public Stage(){
         grid = new Grid();
-        puppy = new Puppy(grid.cellAtColRow(0, 0));
+        puppy = new Puppy(grid.cellAtColRow(0, 1));
         lion = new Lion(grid.cellAtColRow(0, 18));
         rabbit = new Rabbit(grid.cellAtColRow(14,3));
     }

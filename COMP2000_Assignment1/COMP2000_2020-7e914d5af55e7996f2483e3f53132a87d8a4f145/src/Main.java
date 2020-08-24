@@ -8,7 +8,7 @@ class Main extends JFrame {
         Stage stage;
 
         public App() {
-            setPreferredSize(new Dimension(720, 720));
+            setPreferredSize(new Dimension(1020, 720));
             stage = new Stage();
         }
 
